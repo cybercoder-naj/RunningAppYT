@@ -6,24 +6,23 @@ import androidx.lifecycle.ViewModelProvider
 import com.androiddevs.runningappyt.R
 import com.androiddevs.runningappyt.di.ViewModelProviderFactory
 import com.androiddevs.runningappyt.ui.viewmodels.MainViewModel
+import com.androiddevs.runningappyt.ui.viewmodels.StatisticsViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
-    lateinit var testString: String
-
-    @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
 
     lateinit var mainViewModel: MainViewModel
+    lateinit var statisticsViewModel: StatisticsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         mainViewModel = ViewModelProvider(this, viewModelProviderFactory).get(MainViewModel::class.java)
-        Toast.makeText(this, testString, Toast.LENGTH_SHORT).show()
+        statisticsViewModel = ViewModelProvider(this, viewModelProviderFactory).get(StatisticsViewModel::class.java)
     }
 }
